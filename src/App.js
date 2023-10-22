@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import People from "./assets/people.svg"
+import Arrow from "./assets/arrow.svg"
 
-function App() {
+import {
+  Container,
+  H1,
+  Image,
+  ContainerItens,
+  InputLabel,
+  Input,
+  Button,
+} from "./styles";
+
+//JSX => Mistura HTML com JavaScript
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Image alt="Logo-imagem" src={People}/>
+      <ContainerItens>
+
+        <H1>Olá</H1>
+
+        <InputLabel>Nome</InputLabel>
+        <Input placeholder="Nome"/>
+
+        <InputLabel>Idade</InputLabel>
+        <Input placeholder="Idade"/>
+
+        <Button >Cadastrar <Image style={{ margin: '0' }} alt="seta" src={Arrow}/></Button>
+
+      </ContainerItens>
+    </Container>
   );
-}
+};
 
 export default App;
