@@ -29,15 +29,20 @@ const App = () => {
   // REACT HOOKS => FERRAMENTAS AUXILIARES
 
   async function addNewUser() {
-    const { data: newUser } = await axios.post("http://localhost:3001/users", {
-      name: inputNane.current.value,
-      age: inputAge.current.value,
-    });
+    // const { data: newUser } = await axios.post("http://localhost:3001/users", {
+    //   name: inputNane.current.value,
+    //   age: inputAge.current.value,
+    // });
 
-    console.log(newUser)
+    // setUsers([...users, newUser]);
 
-    setUsers([...users, newUser]);
+    const { data: newUsers } = await axios.get("http://localhost:3001/users")
+
+    setUsers(newUsers);
+
   }
+
+  // REACT HOOK => useEffect (Efeito Colateral)
 
   function deleteUser(userId) {
     const newUsers = users.filter((user) => user.id !== userId);
