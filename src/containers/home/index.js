@@ -2,9 +2,8 @@ import React, { useState, useRef } from "react";
 
 import axios from "axios";
 
-import People from "./assets/people.svg";
-import Arrow from "./assets/arrow.svg";
-import Trash from "./assets/trash.svg";
+import People from "../../assets/people.svg";
+import Arrow from "../../assets/arrow.svg";
 
 import {
   Container,
@@ -14,7 +13,6 @@ import {
   InputLabel,
   Input,
   Button,
-  User,
 } from "./styles";
 
 //Saber consumir outra API's utilizando o AXIOS
@@ -29,26 +27,20 @@ const App = () => {
   // REACT HOOKS => FERRAMENTAS AUXILIARES
 
   async function addNewUser() {
-    // const { data: newUser } = await axios.post("http://localhost:3001/users", {
-    //   name: inputNane.current.value,
-    //   age: inputAge.current.value,
-    // });
+    const { data: newUser } = await axios.post("http://localhost:3001/users", {
+      name: inputNane.current.value,
+      age: inputAge.current.value,
+    });
 
-    // setUsers([...users, newUser]);
-
-    const { data: newUsers } = await axios.get("http://localhost:3001/users")
-
-    setUsers(newUsers);
-
+    setUsers([...users, newUser]);
   }
 
   // REACT HOOK => useEffect (Efeito Colateral)
+  // A minha aplicação inicial (a pagina carregou o useEffect é chamado)
+  //Quando um estado que está no array de dependencia do useEffect é alterado
+  // useEffect não aceita o async, só se fizer como está acima utilzando uma function (async function fetUsers(){  }, dessa forma )
 
-  function deleteUser(userId) {
-    const newUsers = users.filter((user) => user.id !== userId);
 
-    setUsers(newUsers);
-  }
 
   return (
     <Container>
@@ -65,17 +57,6 @@ const App = () => {
         <Button onClick={addNewUser}>
           Cadastrar <Image style={{ margin: "0" }} alt="seta" src={Arrow} />
         </Button>
-
-        <ul>
-          {users.map((user) => (
-            <User key={user.id}>
-              <p>{user.name}</p> <p>{user.age}</p>
-              <button onClick={() => deleteUser(user.id)}>
-                <img alt="Lata-de-lixo" src={Trash} />
-              </button>
-            </User>
-          ))}
-        </ul>
       </ContainerItens>
     </Container>
   );
