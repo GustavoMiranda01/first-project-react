@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+
 import axios from "axios";
 
 import Avatar from "../../assets/avatar.svg";
@@ -55,7 +56,7 @@ const Users = () => {
           ))}
         </ul>
 
-        <Button >
+        <Button to="/">
         <Image style={{ margin: "0" }} alt="seta" src={Arrow} /> Voltar 
         </Button>
       </ContainerItens>
