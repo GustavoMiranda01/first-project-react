@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom'
 
 
 import background from "../../assets/background1.svg";
@@ -14,6 +13,7 @@ export const Container = styled.div`
   gap: 40px;
 
   height: 100%;
+  min-height: 100vh;
 `;
 
 export const Image = styled.img`
@@ -36,7 +36,7 @@ export const ContainerItens = styled.div`
   flex-direction: column;
 
   height: 100%;
-  min-height: calc(100vh - 247px);
+  min-height: calc(100vh - 170px);
 
   ${(props) =>
     props.isBlur &&
@@ -56,7 +56,7 @@ export const H1 = styled.h1`
   margin-bottom: 80px;
 `;
 
-export const Button = styled(Link)`
+export const Button = styled.button`
   width: 342px;
   height: 74px;
   margin-top: 120px;

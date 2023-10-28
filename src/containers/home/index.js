@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
@@ -21,6 +22,7 @@ import {
 const App = () => {
   // const users = [];
   const [users, setUsers] = useState([]);
+  const history = useHistory();
   const inputNane = useRef();
   const inputAge = useRef();
 
@@ -33,14 +35,14 @@ const App = () => {
     });
 
     setUsers([...users, newUser]);
+
+    history.push("/usuarios");
   }
 
   // REACT HOOK => useEffect (Efeito Colateral)
   // A minha aplicação inicial (a pagina carregou o useEffect é chamado)
   //Quando um estado que está no array de dependencia do useEffect é alterado
   // useEffect não aceita o async, só se fizer como está acima utilzando uma function (async function fetUsers(){  }, dessa forma )
-
-
 
   return (
     <Container>
@@ -54,7 +56,7 @@ const App = () => {
         <InputLabel>Idade</InputLabel>
         <Input ref={inputAge} placeholder="Idade" />
 
-        <Button to="/usuarios" onClick={addNewUser}>
+        <Button onClick={addNewUser}>
           Cadastrar <Image style={{ margin: "0" }} alt="seta" src={Arrow} />
         </Button>
       </ContainerItens>

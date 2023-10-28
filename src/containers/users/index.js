@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom"
 
 
 import axios from "axios";
@@ -21,6 +22,8 @@ import {
 //JSX => Mistura HTML com JavaScript
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const history = useHistory()
+
 
   useEffect(() => {
     async function fetchUsers() {
@@ -40,6 +43,10 @@ const Users = () => {
     setUsers(newUsers);
   }
 
+  function pushPage(){
+    history.push("/")
+  }
+
   return (
     <Container>
       <Image alt="Logo-imagem" src={Avatar} />
@@ -56,7 +63,7 @@ const Users = () => {
           ))}
         </ul>
 
-        <Button to="/">
+        <Button onClick={pushPage}>
         <Image style={{ margin: "0" }} alt="seta" src={Arrow} /> Voltar 
         </Button>
       </ContainerItens>
