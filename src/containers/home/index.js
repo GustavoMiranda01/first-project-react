@@ -5,20 +5,22 @@ import axios from "axios";
 
 import People from "../../assets/people.svg";
 import Arrow from "../../assets/arrow.svg";
+import H1 from '../../components/Title'
+import ContainerItens from "../../components/ContainerItens"
+import Button from "../../components/Button"
 
 import {
   Container,
-  H1,
   Image,
-  ContainerItens,
   InputLabel,
   Input,
-  Button,
 } from "./styles";
 
 //Saber consumir outra API's utilizando o AXIOS
 
 //JSX => Mistura HTML com JavaScript
+
+//PROPS => PROPRIEDADES
 const App = () => {
   // const users = [];
   const [users, setUsers] = useState([]);
